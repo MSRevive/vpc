@@ -50,80 +50,80 @@ endif
 # ---------------------------------------------------------------- #
 
 VPC_SRC:= \
-	src/utils/vpc/exprsimplifier.cpp \
-	groupscript.cpp \
-	conditionals.cpp \
-	macros.cpp \
-	projectscript.cpp \
-	scriptsource.cpp \
-	baseprojectdatacollector.cpp \
-	configuration.cpp \
-	dependencies.cpp \
-	main.cpp \
-	projectgenerator_makefile.cpp \
-	solutiongenerator_makefile.cpp \
-	solutiongenerator_xcode.cpp \
-	sys_utils.cpp \
-	../vpccrccheck/crccheck_shared.cpp \
-	projectgenerator_codelite.cpp \
-	solutiongenerator_codelite.cpp \
+	src/exprsimplifier.cpp \
+	src/groupscript.cpp \
+	src/conditionals.cpp \
+	src/macros.cpp \
+	src/projectscript.cpp \
+	src/scriptsource.cpp \
+	src/baseprojectdatacollector.cpp \
+	src/configuration.cpp \
+	src/dependencies.cpp \
+	src/main.cpp \
+	src/projectgenerator_makefile.cpp \
+	src/solutiongenerator_makefile.cpp \
+	src/solutiongenerator_xcode.cpp \
+	src/sys_utils.cpp \
+	src/crccheck_shared.cpp \
+	src/projectgenerator_codelite.cpp \
+	src/solutiongenerator_codelite.cpp \
 
 TIER0_SRC:= \
-	../../tier0/assert_dialog.cpp \
-	../../tier0/cpu_posix.cpp \
-	../../tier0/cpu.cpp \
-	../../tier0/dbg.cpp \
-	../../tier0/fasttimer.cpp \
-	../../tier0/mem.cpp \
-	../../tier0/mem_helpers.cpp \
-	../../tier0/memdbg.cpp \
-	../../tier0/memstd.cpp \
-	../../tier0/memvalidate.cpp \
-	../../tier0/minidump.cpp \
-	../../tier0/pch_tier0.cpp \
-	../../tier0/threadtools.cpp \
-	../../tier0/valobject.cpp \
-	../../tier0/vprof.cpp 
+	src/tier0/assert_dialog.cpp \
+	src/tier0/cpu_posix.cpp \
+	src/tier0/cpu.cpp \
+	src/tier0/dbg.cpp \
+	src/tier0/fasttimer.cpp \
+	src/tier0/mem.cpp \
+	src/tier0/mem_helpers.cpp \
+	src/tier0/memdbg.cpp \
+	src/tier0/memstd.cpp \
+	src/tier0/memvalidate.cpp \
+	src/tier0/minidump.cpp \
+	src/tier0/pch_tier0.cpp \
+	src/tier0/threadtools.cpp \
+	src/tier0/valobject.cpp \
+	src/tier0/vprof.cpp 
 
 
 TIER1_SRC:= \
-	../../tier1/keyvalues.cpp \
-	../../tier1/checksum_crc.cpp \
-	../../tier1/checksum_md5.cpp \
-	../../tier1/convar.cpp \
-	../../tier1/generichash.cpp \
-	../../tier1/interface.cpp \
-	../../tier1/mempool.cpp \
-	../../tier1/memstack.cpp \
-	../../tier1/stringpool.cpp \
-	../../tier1/utlbuffer.cpp \
-	../../tier1/utlsymbol.cpp 
+	src/tier1/keyvalues.cpp \
+	src/tier1/checksum_crc.cpp \
+	src/tier1/checksum_md5.cpp \
+	src/tier1/convar.cpp \
+	src/tier1/generichash.cpp \
+	src/tier1/interface.cpp \
+	src/tier1/mempool.cpp \
+	src/tier1/memstack.cpp \
+	src/tier1/stringpool.cpp \
+	src/tier1/utlbuffer.cpp \
+	src/tier1/utlsymbol.cpp 
 
 VSTDLIB_SRC:= \
-	../../vstdlib/cvar.cpp \
-	../../vstdlib/vstrtools.cpp \
-	../../vstdlib/random.cpp
+	src/vstdlib/cvar.cpp \
+	src/vstdlib/vstrtools.cpp \
+	src/vstdlib/random.cpp
 
 
 ifeq "$(STEAM_BRANCH)" "1"
 	TIER0_SRC+= \
-		../../tier0/tier0.cpp \
-		../../tier0/platform_posix.cpp \
-		../../tier0/validator.cpp \
-		../../tier0/thread.cpp \
-		../../tier0/pmelib.cpp \
-		../../tier0/pme_posix.cpp \
-		../../tier0/testthread.cpp \
-		../../tier0/cpu_posix.cpp \
-		../../tier0/memblockhdr.cpp 
+		src/tier0/tier0.cpp \
+		src/tier0/platform_posix.cpp \
+		src/tier0/validator.cpp \
+		src/tier0/thread.cpp \
+		src/tier0/pmelib.cpp \
+		src/tier0/pme_posix.cpp \
+		src/tier0/testthread.cpp \
+		src/tier0/cpu_posix.cpp \
+		src/tier0/memblockhdr.cpp 
 
 	VSTDLIB_SRC+= \
-		../../vstdlib/keyvaluessystem.cpp \
-		../../vstdlib/qsort_s.cpp \
-		../../vstdlib/strtools.cpp \
-		../../vstdlib/stringnormalize.cpp \
-		../../vstdlib/splitstring.cpp \
-		../../vstdlib/commandline.cpp
+		src/vstdlib/keyvaluessystem.cpp \
+		src/vstdlib/qsort_s.cpp \
+		src/vstdlib/strtools.cpp \
+		src/vstdlib/stringnormalize.cpp \
+		src/vstdlib/splitstring.cpp \
+		src/vstdlib/commandline.cpp
 
 	INTERFACES_SRC= 
 
@@ -132,26 +132,26 @@ ifeq "$(STEAM_BRANCH)" "1"
 else
 
 	TIER0_SRC+= \
-		../../tier0/platform_posix.cpp \
-		../../tier0/pme_posix.cpp \
-		../../tier0/commandline.cpp \
-		../../tier0/win32consoleio.cpp \
-		../../tier0/logging.cpp \
-		../../tier0/tier0_strtools.cpp
+		src/tier0/platform_posix.cpp \
+		src/tier0/pme_posix.cpp \
+		src/tier0/commandline.cpp \
+		src/tier0/win32consoleio.cpp \
+		src/tier0/logging.cpp \
+		src/tier0/tier0_strtools.cpp
 
 	TIER1_SRC+= \
-		../../tier1/utlstring.cpp \
-		../../tier1/tier1.cpp \
-		../../tier1/characterset.cpp \
-		../../tier1/splitstring.cpp \
-		../../tier1/strtools.cpp \
-		../../tier1/exprevaluator.cpp \
+		src/tier1/utlstring.cpp \
+		src/tier1/tier1.cpp \
+		src/tier1/characterset.cpp \
+		src/tier1/splitstring.cpp \
+		src/tier1/strtools.cpp \
+		src/tier1/exprevaluator.cpp \
 
 	VSTDLIB_SRC+= \
-		../../vstdlib/keyvaluessystem.cpp
+		src/vstdlib/keyvaluessystem.cpp
 
 	INTERFACES_SRC= \
-		../../interfaces/interfaces.cpp
+		src/interfaces/interfaces.cpp
 
 	BINLAUNCH_SRC = \
 
@@ -186,12 +186,12 @@ CONFIG_DEPENDENT_FLAGS:=-O3 -g1 -ggdb
 
 endif
 
-OBJS:=$(addprefix $(OUTDIR)/, $(subst ../../, ,$(SRC:.cpp=.o)))
+OBJS:=$(addprefix $(OUTDIR)/, $(subst src, ,$(SRC:.cpp=.o)))
 
 
 OUTFILE:=$(OUTDIR)/vpc
-CFG_INC:=-I../../public -I../../common -I../../public/tier0 \
-	-I../../public/tier1 -I../../public/tier2 -I../../public/vstdlib
+CFG_INC:=-Isrc/public -Isrc/common -Isrc/public/tier0 \
+	-I.src/public/tier1 -I.src/public/tier2 -I.src/public/vstdlib
 
 
 CFLAGS=-D_POSIX -DPOSIX -DGNUC -DNDEBUG $(CONFIG_DEPENDENT_FLAGS) -msse -mmmx -pipe -w -fpermissive -fPIC $(CFG_INC)
@@ -235,10 +235,10 @@ LINK+= -m32
 endif
 
 # Build rules
-all: $(OUTFILE) ../../../../devtools/bin/vpc$(EXE_POSTFIX)
+all: $(OUTFILE) src/devtools/bin/vpc$(EXE_POSTFIX)
 
-../../../../devtools/bin/vpc$(EXE_POSTFIX) : $(OUTFILE)
-	cp "$(OUTFILE)" ../../../../devtools/bin/vpc$(EXE_POSTFIX)
+src/devtools/bin/vpc$(EXE_POSTFIX) : $(OUTFILE)
+	cp "$(OUTFILE)" src/devtools/bin/vpc$(EXE_POSTFIX)
 
 $(OUTFILE): Makefile $(OBJS)
 	$(LINK)
@@ -252,7 +252,7 @@ clean:
 	$(RM) -f $(OUTFILE)
 	$(RM) -f $(OBJS)
 	$(RM) -f $(OBJS:.o=.d)
-	$(RM) -f ../../../../devtools/bin/vpc$(EXE_POSTFIX)
+	$(RM) -f src/devtools/bin/vpc$(EXE_POSTFIX)
 
 # Clean this project and all dependencies
 cleanall: clean
@@ -266,27 +266,27 @@ $(OUTDIR)/%.o : %.cpp
 	@$(MAKEDEPEND);
 	$(COMPILE)
 
-$(OUTDIR)/tier0/%.o : ../../tier0/%.cpp
+$(OUTDIR)/tier0/%.o : src/tier0/%.cpp
 	-$(MKDIR) -p $(@D)
 	@$(MAKEDEPEND);
 	$(COMPILE)
 
-$(OUTDIR)/tier1/%.o : ../../tier1/%.cpp
+$(OUTDIR)/tier1/%.o : src/tier1/%.cpp
 	-$(MKDIR) -p $(@D)
 	@$(MAKEDEPEND);
 	$(COMPILE)
 
-$(OUTDIR)/vstdlib/%.o : ../../vstdlib/%.cpp
+$(OUTDIR)/vstdlib/%.o : src/vstdlib/%.cpp
 	-$(MKDIR) -p $(@D)
 	@$(MAKEDEPEND);
 	$(COMPILE)
 
-$(OUTDIR)/interfaces/%.o : ../../interfaces/%.cpp
+$(OUTDIR)/interfaces/%.o : src/interfaces/%.cpp
 	if [ ! -d $(@D) ]; then $(MKDIR) $(@D); fi
 	@$(MAKEDEPEND);
 	$(COMPILE)
 
-$(OUTDIR)/utils/binlaunch/%.o : ../binlaunch/%.cpp
+$(OUTDIR)/utils/binlaunch/%.o : src/binlaunch/%.cpp
 	if [ ! -d $(@D) ]; then $(MKDIR) $(@D); fi
 	@$(MAKEDEPEND);
 	$(COMPILE)
