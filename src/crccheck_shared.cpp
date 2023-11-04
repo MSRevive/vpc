@@ -1,5 +1,5 @@
 
-#include "../vpc/vpc.h"
+#include "vpc.h"
 #include "crccheck_shared.h"
 #include "tier1/checksum_crc.h"
 #include "tier1/strtools.h"

@@ -65,32 +65,32 @@
     <ClCompile Include="tier1\utlbuffer.cpp" />
     <ClCompile Include="tier1\utlstring.cpp" />
     <ClCompile Include="tier1\utlsymbol.cpp" />
-    <ClCompile Include="utils\vpc\baseprojectdatacollector.cpp" />
-    <ClCompile Include="utils\vpc\conditionals.cpp" />
-    <ClCompile Include="utils\vpc\configuration.cpp" />
-    <ClCompile Include="utils\vpc\config_general.cpp">
+    <ClCompile Include="baseprojectdatacollector.cpp" />
+    <ClCompile Include="conditionals.cpp" />
+    <ClCompile Include="configuration.cpp" />
+    <ClCompile Include="config_general.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="utils\vpc\crccheck_shared.cpp" />
-    <ClCompile Include="utils\vpc\dependencies.cpp" />
-    <ClCompile Include="utils\vpc\exprsimplifier.cpp" />
-    <ClCompile Include="utils\vpc\generatordefinition.cpp" />
-    <ClCompile Include="utils\vpc\groupscript.cpp" />
-    <ClCompile Include="utils\vpc\macros.cpp" />
-    <ClCompile Include="utils\vpc\main.cpp" />
-    <ClCompile Include="utils\vpc\projectgenerator_codelite.cpp" />
-    <ClCompile Include="utils\vpc\projectgenerator_makefile.cpp" />
-    <ClCompile Include="utils\vpc\projectgenerator_vcproj.cpp" />
-    <ClCompile Include="utils\vpc\projectgenerator_win32.cpp" />
-    <ClCompile Include="utils\vpc\projectgenerator_win32_2010.cpp" />
-    <ClCompile Include="utils\vpc\projectscript.cpp" />
-    <ClCompile Include="utils\vpc\scriptsource.cpp" />
-    <ClCompile Include="utils\vpc\solutiongenerator_codelite.cpp" />
-    <ClCompile Include="utils\vpc\solutiongenerator_makefile.cpp" />
-    <ClCompile Include="utils\vpc\solutiongenerator_win32.cpp" />
-    <ClCompile Include="utils\vpc\solutiongenerator_xcode.cpp" />
-    <ClCompile Include="utils\vpc\sys_utils.cpp" />
+    <ClCompile Include="crccheck_shared.cpp" />
+    <ClCompile Include="dependencies.cpp" />
+    <ClCompile Include="exprsimplifier.cpp" />
+    <ClCompile Include="generatordefinition.cpp" />
+    <ClCompile Include="groupscript.cpp" />
+    <ClCompile Include="macros.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="projectgenerator_codelite.cpp" />
+    <ClCompile Include="projectgenerator_makefile.cpp" />
+    <ClCompile Include="projectgenerator_vcproj.cpp" />
+    <ClCompile Include="projectgenerator_win32.cpp" />
+    <ClCompile Include="projectgenerator_win32_2010.cpp" />
+    <ClCompile Include="projectscript.cpp" />
+    <ClCompile Include="scriptsource.cpp" />
+    <ClCompile Include="solutiongenerator_codelite.cpp" />
+    <ClCompile Include="solutiongenerator_makefile.cpp" />
+    <ClCompile Include="solutiongenerator_win32.cpp" />
+    <ClCompile Include="solutiongenerator_xcode.cpp" />
+    <ClCompile Include="sys_utils.cpp" />
     <ClCompile Include="vstdlib\cvar.cpp" />
     <ClCompile Include="vstdlib\keyvaluessystem.cpp" />
     <ClCompile Include="vstdlib\random.cpp" />
@@ -131,13 +131,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)src\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>src\bin\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)src\bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>src\bin\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -160,7 +160,7 @@
       <IgnoreSpecificDefaultLibraries>libc;libcd;libcmt;libcpmt;libcpmt1</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(SolutionDir)..\build\"</Command>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)build\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -187,7 +187,7 @@
       <IgnoreSpecificDefaultLibraries>libc;libcd;libcmtd;libcpmtd;libcpmtd0;libcpmtd1</IgnoreSpecificDefaultLibraries>
     </Link>
     <PostBuildEvent>
-      <Command>copy "$(TargetPath)" "$(SolutionDir)..\build\"</Command>
+      <Command>copy "$(TargetPath)" "$(SolutionDir)build\"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
