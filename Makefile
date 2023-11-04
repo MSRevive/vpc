@@ -10,7 +10,7 @@ EXE_POSTFIX:=""
 # Figure out if we're building in the Steam tree or not.
 # ---------------------------------------------------------------- #
 
-SRCROOT:=../..
+SRCROOT:=src
 -include $(SRCROOT)/devtools/steam_def.mak
 
 
@@ -50,7 +50,7 @@ endif
 # ---------------------------------------------------------------- #
 
 VPC_SRC:= \
-	exprsimplifier.cpp \
+	src/utils/vpc/exprsimplifier.cpp \
 	groupscript.cpp \
 	conditionals.cpp \
 	macros.cpp \
