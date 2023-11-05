@@ -2,7 +2,7 @@
 SHELL=/bin/sh
 RM:=rm
 MKDIR:=mkdir
-OS:=$(shell uname)
+OS:=linux-x86
 EXE_POSTFIX:=""
 
 
@@ -174,7 +174,7 @@ endif
 #
 # Configuration: Debug
 #
-ifeq "$(CFG)" "Debug"
+ifeq "$(CFG)" "debug"
 	OUTDIR:=obj/$(OS)/debug
 	CONFIG_DEPENDENT_FLAGS:=-O0 -g3 -ggdb
 else
@@ -217,18 +217,7 @@ CFLAGS+= -DCOMPILER_GCC
 MAKEDEPEND=$(CXX) -M -MT $@ -MM $(CFLAGS) $< | sed -e 's@^\(.*\)\.o:@\1.d \1.o:@' > $(@:.o=.d)
 COMPILE=$(CXX) -c $(CFLAGS) -o $@ $<
 LINK=$(CXX) $(CONFIG_DEPENDENT_FLAGS)  -o "$(OUTFILE)" $(OBJS) -ldl -lpthread
-
-ifeq "$(OS)" "Darwin"
-	LINK+=-liconv -framework Foundation
-endif
-
-ifeq "$(OS)" "Darwin"
-	LINK+= -arch i386
-endif
-
-ifeq "$(OS)" "Linux"
-	LINK+= -m32
-endif
+LINK+= -m32
 
 # Build rules
 all: $(OUTFILE) src/devtools/bin/vpc$(EXE_POSTFIX)
