@@ -22,21 +22,21 @@ CC:=gcc
 CXX:=g++
 
 ifeq ($(OS),Darwin)
-SDKROOT:=$(shell xcodebuild -sdk macosx -version Path)
-CC:=clang -m32
-CXX:=clang++ -m32
-EXE_POSTFIX:=_osx
+	SDKROOT:=$(shell xcodebuild -sdk macosx -version Path)
+	CC:=clang -m32
+	CXX:=clang++ -m32
+	EXE_POSTFIX:=_osx
 endif
 
 ifeq ($(OS),Linux)
 ifeq ($(wildcard /valve/bin/gcc),)
-CC:=gcc
-CXX:=g++
+	CC:=gcc
+	CXX:=g++
 else
-CC:=/valve/bin/gcc-4.7
-CXX:=/valve/bin/g++-4.7
+	CC:=/valve/bin/gcc-4.7
+	CXX:=/valve/bin/g++-4.7
 endif
-EXE_POSTFIX:=_linux
+	EXE_POSTFIX:=_linux
 endif
 
 ifneq ($(CC_OVERRIDE),)
@@ -167,7 +167,7 @@ SRC:=$(VPC_SRC) $(TIER0_SRC) $(TIER1_SRC) $(VSTDLIB_SRC) $(INTERFACES_SRC) $(BIN
 
 # If no configuration is specified, "Debug" will be used
 ifndef "CFG"
-CFG:=Release
+	CFG:=release
 endif
 
 
@@ -175,15 +175,11 @@ endif
 # Configuration: Debug
 #
 ifeq "$(CFG)" "Debug"
-
-OUTDIR:=obj/$(OS)/debug
-CONFIG_DEPENDENT_FLAGS:=-O0 -g3 -ggdb
-
+	OUTDIR:=obj/$(OS)/debug
+	CONFIG_DEPENDENT_FLAGS:=-O0 -g3 -ggdb
 else
-
-OUTDIR:=obj/$(OS)/release
-CONFIG_DEPENDENT_FLAGS:=-O3 -g1 -ggdb
-
+	OUTDIR:=obj/$(OS)/release
+	CONFIG_DEPENDENT_FLAGS:=-O3 -g1 -ggdb
 endif
 
 OBJS:=$(addprefix $(OUTDIR)/, $(subst src, ,$(SRC:.cpp=.o)))
@@ -196,22 +192,22 @@ CFG_INC:=-Isrc/public -Isrc/common -Isrc/public/tier0 \
 
 CFLAGS=-D_POSIX -DPOSIX -DGNUC -DNDEBUG $(CONFIG_DEPENDENT_FLAGS) -msse -mmmx -pipe -w -fpermissive -fPIC $(CFG_INC)
 ifeq "$(STEAM_BRANCH)" "1"
-CFLAGS+= -DSTEAM
+	CFLAGS+= -DSTEAM
 endif
 
 
 ifeq "$(OS)" "Darwin"
-CFLAGS+=-I$(SDKROOT)/usr/include/malloc
-CFLAGS+= -DOSX -D_OSX
-CFLAGS+= -arch i386 -fasm-blocks
+	CFLAGS+=-I$(SDKROOT)/usr/include/malloc
+	CFLAGS+= -DOSX -D_OSX
+	CFLAGS+= -arch i386 -fasm-blocks
 endif
 
 ifeq "$(OS)" "Linux"
-CFLAGS+= -DPLATFORM_LINUX -D_LINUX -DLINUX -m32
+	CFLAGS+= -DPLATFORM_LINUX -D_LINUX -DLINUX -m32
 endif
 
 ifeq ($(CYGWIN),1)
-CFLAGS+=-D_CYGWIN -DCYGWIN -D_CYGWIN_WINDOWS_TARGET
+	CFLAGS+=-D_CYGWIN -DCYGWIN -D_CYGWIN_WINDOWS_TARGET
 endif
 
 CFLAGS+= -DCOMPILER_GCC
@@ -223,15 +219,15 @@ COMPILE=$(CXX) -c $(CFLAGS) -o $@ $<
 LINK=$(CXX) $(CONFIG_DEPENDENT_FLAGS)  -o "$(OUTFILE)" $(OBJS) -ldl -lpthread
 
 ifeq "$(OS)" "Darwin"
-LINK+=-liconv -framework Foundation
+	LINK+=-liconv -framework Foundation
 endif
 
 ifeq "$(OS)" "Darwin"
-LINK+= -arch i386
+	LINK+= -arch i386
 endif
 
 ifeq "$(OS)" "Linux"
-LINK+= -m32
+	LINK+= -m32
 endif
 
 # Build rules
